@@ -1,5 +1,5 @@
 # debugging-challenges
 
 Group Members:
-Andrew Hinton
+Andrew Hinton,
 Christian Medina
