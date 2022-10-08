@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepath.debuggingchallenges.adapters.MoviesAdapter
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepath.debuggingchallenges.R
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
@@ -24,21 +25,25 @@ class MoviesActivity : AppCompatActivity() {
         rvMovies = findViewById(R.id.rvMovies)
 
         // Create the adapter to convert the array to views
-        val adapter = MoviesAdapter(movies)
+        adapter = MoviesAdapter(movies)
 
         // Attach the adapter to a ListView
         rvMovies?.adapter = adapter
+        rvMovies?.layoutManager = LinearLayoutManager(this)
         fetchMovies()
     }
 
     private fun fetchMovies() {
-        val url = " https://api.themoviedb.org/3/movie/now_playing?api_key="
+        val url = " https://api.themoviedb.org/3/movie/now_playing?api_key=04240126137c074c41f98fa14ebdce47"
         val client = AsyncHttpClient()
         client[url, null, object : JsonHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Headers, response: JSON) {
                 try {
                     val moviesJson = response.jsonObject.getJSONArray("results")
+                    Log.d("Movies", moviesJson.toString())
                     movies = Movie.fromJSONArray(moviesJson)
+                    Log.d("Movies List: ", movies.toString())
+                    adapter?.notifyDataSetChanged()
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }

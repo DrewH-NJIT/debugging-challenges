@@ -13,11 +13,11 @@ class ToolbarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_toolbar)
 
         // Find the toolbar view inside the activity layout
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        val toolbar = findViewById<View>(R.id.toolbar) as androidx.appcompat.widget.Toolbar
 
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
-        setActionBar(toolbar)
+        setSupportActionBar(toolbar)
         val tvDescription = findViewById<View>(R.id.tvDescription) as TextView
         tvDescription.setText(R.string.hello)
     }

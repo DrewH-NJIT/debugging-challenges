@@ -14,15 +14,8 @@
         android:layout_height="wrap_content"
         android:text="@string/go"
         android:id="@+id/btnGo"
-        android:onClick="onGoClickz"
+        android:onClick="onGoClick"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="2dp"
-        android:clickable="true"
-        android:background="@android:color/transparent"/>
 
 </RelativeLayout>
